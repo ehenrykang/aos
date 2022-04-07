@@ -40,44 +40,44 @@ def create_new_user():
     driver.find_element(By.LINK_TEXT, 'CREATE NEW ACCOUNT').click()
     sleep(1)
     if driver.current_url == locators.aos_register_url:
-        sleep(0.5)
+        sleep(1)
         # Enter Account Details
         driver.find_element(By.NAME, 'usernameRegisterPage').send_keys(locators.new_username)
-        sleep(0.25)
+        sleep(1)
         driver.find_element(By.NAME, 'emailRegisterPage').send_keys(locators.email)
-        sleep(0.25)
+        sleep(1)
         driver.find_element(By.NAME, 'passwordRegisterPage').send_keys(locators.new_password)
-        sleep(0.25)
+        sleep(1)
         driver.find_element(By.NAME, 'confirm_passwordRegisterPage').send_keys(locators.new_password)
-        sleep(0.5)
+        sleep(1)
 
         # Enter Personal Details
         driver.find_element(By.NAME, 'first_nameRegisterPage').send_keys(locators.new_firstname)
-        sleep(0.25)
+        sleep(1)
         driver.find_element(By.NAME, 'last_nameRegisterPage').send_keys(locators.new_lastname)
-        sleep(0.25)
+        sleep(1)
         driver.find_element(By.NAME, 'phone_numberRegisterPage').send_keys(locators.phone)
-        sleep(0.5)
+        sleep(1)
 
         # Enter Address information
         Select(driver.find_element(By.NAME, 'countryListboxRegisterPage')).select_by_visible_text('Canada')
-        sleep(0.25)
+        sleep(1)
         driver.find_element(By.NAME, 'cityRegisterPage').send_keys(locators.city)
-        sleep(0.25)
+        sleep(1)
         driver.find_element(By.NAME, 'addressRegisterPage').send_keys(locators.address)
-        sleep(0.25)
+        sleep(1)
         driver.find_element(By.NAME, 'state_/_province_/_regionRegisterPage').send_keys(locators.state_province_region)
-        sleep(0.25)
+        sleep(1)
         driver.find_element(By.NAME, 'postal_codeRegisterPage').send_keys(locators.postal_code)
-        sleep(0.5)
+        sleep(1)
 
         # Checkbox for "I agree..."
         driver.find_element(By.XPATH, '//*[@id="formCover"]/sec-view/div/input').click()
-        sleep(0.5)
+        sleep(1)
 
         # Create new account
         driver.find_element(By.XPATH, '//*[@id="registerPage"]/article/sec-form/div[2]/sec-sender').click()
-        sleep(0.5)
+        sleep(1)
         print(f'--- Test Scenario: Create a new user with Username: {locators.new_username} and Password: {locators.new_password} --- is passed')
 
     else:
@@ -89,7 +89,7 @@ def validate_new_user_created():
     print(f'----------------------------------* VALIDATE NEW USER *----------------------------------')
     if driver.current_url == locators.aos_url:
         assert driver.find_element(By.XPATH, '//h3[text() = "SPECIAL OFFER"]').is_displayed()
-        sleep(0.5)
+        sleep(1)
         print(f'New User Account fullname is: {locators.full_name}')
         print(f'New User Account address is: {locators.address1}')
 
@@ -118,9 +118,9 @@ def log_in():
         driver.find_element(By.ID, 'menuUser').click()
         sleep(3)
         driver.find_element(By.XPATH, '/html/body/login-modal/div/div/div[3]/sec-form/sec-view[1]/div/input').send_keys(locators.new_username)
-        sleep(0.5)
+        sleep(1)
         driver.find_element(By.XPATH, '/html/body/login-modal/div/div/div[3]/sec-form/sec-view[2]/div/input').send_keys(locators.new_password)
-        sleep(0.5)
+        sleep(1)
         driver.find_element(By.ID, 'sign_in_btnundefined').click()
         print(f'We logged in successfully with Username: {locators.new_username} and Password: {locators.new_password}')
         print(f'--- New User Account with username {locators.new_username} is displayed at top right. Test Passed ---')
