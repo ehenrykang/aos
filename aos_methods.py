@@ -13,7 +13,8 @@ driver = webdriver.Chrome(service=s)
 
 # Fixture method - to open web browser
 def setUp():
-    print(f'Test started: {datetime.datetime.now()}')
+    print(f'----------------------------------* * * * *----------------------------------')
+    print(f'Advantage Online Shopping test started at: {datetime.datetime.now()}')
     # Make a full screen
     driver.maximize_window()
 
@@ -22,11 +23,13 @@ def setUp():
 
     # Navigating to the AOS web app URL - https://advantageonlineshopping.com/#/
     driver.get(locators.aos_url)
+    print(f'Launch Advantage Online Shopping')
 
     # Checking that we're on the correct URL address and we're seeing correct title as expected.
     if driver.current_url == locators.aos_url and driver.title == locators.aos_homepage_title:
         print(f'Great! Advantage Online Shopping is launched! URL: {driver.current_url}')
         print(f'We are seeing the page title: ', {driver.title})
+        print()
 
     else:
         print(f'We are NOT at the Advantage Online Shopping Homepage! Please try again or check your code.')
@@ -36,49 +39,52 @@ def setUp():
 def create_new_user():
     print(f'----------------------------------* CREATE NEW USER *----------------------------------')
     driver.find_element(By.ID, 'menuUser').click()
-    sleep(2)
+    print(f'Login Form is displayed - continue to Create New Account')
+    sleep(5)
     driver.find_element(By.LINK_TEXT, 'CREATE NEW ACCOUNT').click()
-    sleep(1)
+    sleep(2)
     if driver.current_url == locators.aos_register_url:
-        sleep(1)
+        print(f'CREATE ACCOUNT Page is displayed')
+        sleep(2)
         # Enter Account Details
         driver.find_element(By.NAME, 'usernameRegisterPage').send_keys(locators.new_username)
-        sleep(1)
+        sleep(2)
         driver.find_element(By.NAME, 'emailRegisterPage').send_keys(locators.email)
-        sleep(1)
+        sleep(2)
         driver.find_element(By.NAME, 'passwordRegisterPage').send_keys(locators.new_password)
-        sleep(1)
+        sleep(2)
         driver.find_element(By.NAME, 'confirm_passwordRegisterPage').send_keys(locators.new_password)
-        sleep(1)
+        sleep(2)
 
         # Enter Personal Details
         driver.find_element(By.NAME, 'first_nameRegisterPage').send_keys(locators.new_firstname)
-        sleep(1)
+        sleep(2)
         driver.find_element(By.NAME, 'last_nameRegisterPage').send_keys(locators.new_lastname)
-        sleep(1)
+        sleep(2)
         driver.find_element(By.NAME, 'phone_numberRegisterPage').send_keys(locators.phone)
-        sleep(1)
+        sleep(2)
 
         # Enter Address information
         Select(driver.find_element(By.NAME, 'countryListboxRegisterPage')).select_by_visible_text('Canada')
-        sleep(1)
+        sleep(2)
         driver.find_element(By.NAME, 'cityRegisterPage').send_keys(locators.city)
-        sleep(1)
+        sleep(2)
         driver.find_element(By.NAME, 'addressRegisterPage').send_keys(locators.address)
-        sleep(1)
+        sleep(2)
         driver.find_element(By.NAME, 'state_/_province_/_regionRegisterPage').send_keys(locators.state_province_region)
-        sleep(1)
+        sleep(2)
         driver.find_element(By.NAME, 'postal_codeRegisterPage').send_keys(locators.postal_code)
-        sleep(1)
+        sleep(2)
 
         # Checkbox for "I agree..."
-        driver.find_element(By.XPATH, '//*[@id="formCover"]/sec-view/div/input').click()
-        sleep(1)
+        driver.find_element(By.NAME, 'i_agree').click()
+        sleep(2)
 
         # Create new account
-        driver.find_element(By.XPATH, '//*[@id="registerPage"]/article/sec-form/div[2]/sec-sender').click()
-        sleep(1)
+        driver.find_element(By.ID, 'register_btnundefined').click()
+        sleep(2)
         print(f'--- Test Scenario: Create a new user with Username: {locators.new_username} and Password: {locators.new_password} --- is passed')
+        print()
 
     else:
         print(f'We are not at the CREATE A NEW ACCOUNT page.')
@@ -88,10 +94,12 @@ def create_new_user():
 def validate_new_user_created():
     print(f'----------------------------------* VALIDATE NEW USER *----------------------------------')
     if driver.current_url == locators.aos_url:
-        assert driver.find_element(By.XPATH, '//h3[text() = "SPECIAL OFFER"]').is_displayed()
-        sleep(1)
+        assert driver.find_element(By.ID, 'menuUserLink').is_displayed()
+        print(f'UserName: {locators.new_username} is displayed')
+        sleep(3)
         print(f'New User Account fullname is: {locators.full_name}')
         print(f'New User Account address is: {locators.address1}')
+        print()
 
     else:
         print(f'New User Account not created successfully. Please verify all the required fields (*) are completed.')
@@ -101,12 +109,14 @@ def validate_new_user_created():
 def log_out():
     print(f'----------------------------------* LOGOUT *----------------------------------')
     driver.find_element(By.ID, 'menuUserLink').click()
-    sleep(1)
+    sleep(3)
     driver.find_element(By.XPATH, '//*[@id="loginMiniTitle"]/label[3]').click()
-    sleep(1)
+    sleep(2)
     if driver.current_url == locators.aos_url:
         print(f'Logged out successfully at: {datetime.datetime.now()}')
-        sleep(1)
+        sleep(2)
+        print()
+
     else:
         print(f'Unable to log out. Something went wrong.')
 
@@ -115,19 +125,33 @@ def log_out():
 def log_in():
     print(f'----------------------------------* LOGIN NEW USER *----------------------------------')
     if driver.current_url == locators.aos_url:
+        print(f'Login Form is displayed - continue to Login')
         driver.find_element(By.ID, 'menuUser').click()
-        sleep(3)
-        driver.find_element(By.XPATH, '/html/body/login-modal/div/div/div[3]/sec-form/sec-view[1]/div/input').send_keys(locators.new_username)
-        sleep(1)
-        driver.find_element(By.XPATH, '/html/body/login-modal/div/div/div[3]/sec-form/sec-view[2]/div/input').send_keys(locators.new_password)
-        sleep(1)
+        sleep(5)
+        driver.find_element(By.NAME, 'username').send_keys(locators.new_username)
+        sleep(2)
+        driver.find_element(By.NAME, 'password').send_keys(locators.new_password)
+        sleep(2)
         driver.find_element(By.ID, 'sign_in_btnundefined').click()
         print(f'We logged in successfully with Username: {locators.new_username} and Password: {locators.new_password}')
         print(f'--- New User Account with username {locators.new_username} is displayed at top right. Test Passed ---')
         sleep(2)
+        print()
 
     else:
         print(f'Log in with new user not successful. Please verify your code or login credentials.')
+
+
+def validate_user_login():
+    print(f'----------------------------------* VALIDATE USER LOGIN *----------------------------------')
+    if driver.current_url == locators.aos_url:
+        assert driver.find_element(By.ID, 'menuUserLink').is_displayed()
+        print(f'Expected user: {locators.new_username} login successful!')
+        sleep(1)
+        print()
+
+    else:
+        print(f'User not logged in. Please try logging in again.')
 
 
 # Close the browser and display a user-friendly message.
