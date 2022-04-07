@@ -179,7 +179,13 @@ def tearDown():
 # log_out()
 
 # Login
-# log_in(locators.aos_username, locators.aos_password)
+# log_in()
+
+# Validate User Login
+# validate_user_login()
+
+# Logout
+# log_out()
 
 # Close the browser
 # tearDown()

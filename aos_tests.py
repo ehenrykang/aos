@@ -1,6 +1,5 @@
 import unittest
 import aos_methods as methods
-import aos_locators as locators
 
 
 class AOSPositiveTestCases(unittest.TestCase):
