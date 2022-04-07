@@ -12,5 +12,6 @@ class AOSPositiveTestCases(unittest.TestCase):
         methods.validate_new_user_created()
         methods.log_out()
         methods.log_in()
+        methods.validate_user_login()
         methods.log_out()
         methods.tearDown()
