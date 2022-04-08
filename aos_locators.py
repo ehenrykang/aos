@@ -21,3 +21,4 @@ country = fake.current_country()
 aos_username = f'{fake.user_name()}{fake.pyint(111,999)}'
 aos_password = f'{fake.password()[:12]}'
 new_user_url = 'https://advantageonlineshopping.com/#/myAccount'
+message = fake.sentence(nb_words=20)
