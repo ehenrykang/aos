@@ -5,6 +5,7 @@ aos_title = 'Advantage Shopping'
 aos_homepage_title = '\xa0Advantage Shopping'
 aos_register_url = 'https://advantageonlineshopping.com/#/register'
 aos_login_url = 'https://advantageonlineshopping.com/#/'
+aos_cart_url = 'https://advantageonlineshopping.com/#/shoppingCart'
 new_username = f'{fake.user_name()[:12]}{fake.pyint(111,999)}'
 new_password = fake.password()[:12]
 new_firstname = fake.first_name()
