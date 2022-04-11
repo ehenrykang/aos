@@ -1,4 +1,5 @@
 from faker import Faker
+import random
 fake = Faker(locale='en_CA')
 aos_url = 'https://advantageonlineshopping.com/#/'
 aos_title = 'Advantage Shopping'
@@ -19,7 +20,10 @@ address = fake.street_address()
 postal_code = fake.postalcode_in_province()
 state_province_region = fake.province_abbr()
 country = fake.current_country()
-aos_username = f'{fake.user_name()}{fake.pyint(111,999)}'
-aos_password = f'{fake.password()[:12]}'
+aos_username = f'{fake.user_name()[:5]}{fake.pyint(11,99)}'
+aos_password = f'{fake.password()[:7]}'
 new_user_url = 'https://advantageonlineshopping.com/#/myAccount'
 message = fake.sentence(nb_words=20)
+order_id = ""
+item_number = random.choice([i for i in range(1, 35) if i != 13])
+aos_product_url = f'{aos_url}product/{item_number}'
