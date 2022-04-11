@@ -599,6 +599,14 @@ def delete_user_account():
 def validate_user_account_deleted():
     print(f'*----------------------------------~* VALIDATE USER ACCOUNT DELETED *~----------------------------------*')
     if driver.current_url == locators.aos_url:
+        print(f'Login Form is displayed --- continue to Login.')
+        driver.find_element(By.ID, 'menuUser').click()
+        sleep(3)
+        # Enter user account credentials
+        driver.find_element(By.NAME, 'username').send_keys(locators.new_username)
+        sleep(1)
+        driver.find_element(By.NAME, 'password').send_keys(locators.new_password)
+        sleep(1)
         # Try to sign in with the deleted user account credentials
         driver.find_element(By.ID, 'sign_in_btnundefined').click()
         sleep(1)
