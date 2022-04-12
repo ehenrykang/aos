@@ -20,8 +20,8 @@ address = fake.street_address()
 postal_code = fake.postalcode_in_province()
 state_province_region = fake.province_abbr()
 country = fake.current_country()
-aos_username = f'{fake.user_name()[:5]}{fake.pyint(11,99)}'
-aos_password = f'{fake.password()[:7]}'
+aos_username = f'{fake.user_name()[:8]}{fake.pyint(11,99)}'
+aos_password = f'{fake.password()[:10]}'
 new_user_url = 'https://advantageonlineshopping.com/#/myAccount'
 message = fake.sentence(nb_words=20)
 order_id = ""

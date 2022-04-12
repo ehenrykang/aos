@@ -576,13 +576,14 @@ def delete_user_account():
         print(f'Delete popup is displayed: {popup}')
 
         # Click the Delete Account button
-        driver.find_element(By.XPATH, '//button[contains(., "Delete Account")]').click()
+        driver.find_element(By.CLASS_NAME, 'deleteBtnText').click()
         sleep(5)
 
         # Delete Confirmation screen
         assert driver.find_element(By.XPATH, '//*[contains(@class, "deletePopupBtn deleteRed")]').is_displayed()
         popup1 = driver.find_element(By.XPATH, '//*[contains(@class, "deletePopupBtn deleteRed")]').is_displayed()
         print(f'Delete Confirmation screen is displayed: {popup1}')
+        sleep(2)
 
         # Confirm deletion of account
         driver.find_element(By.XPATH, '//*[contains(@class, "deletePopupBtn deleteRed")]').click()
@@ -600,15 +601,15 @@ def validate_user_account_deleted():
     print(f'*----------------------------------~* VALIDATE USER ACCOUNT DELETED *~----------------------------------*')
     if driver.current_url == locators.aos_url:
         print(f'Login Form is displayed --- continue to Login.')
-        driver.find_element(By.ID, 'menuUser').click()
-        sleep(3)
-        # Enter user account credentials
-        driver.find_element(By.NAME, 'username').send_keys(locators.new_username)
-        sleep(1)
-        driver.find_element(By.NAME, 'password').send_keys(locators.new_password)
-        sleep(1)
-        # Try to sign in with the deleted user account credentials
-        driver.find_element(By.ID, 'sign_in_btnundefined').click()
+        # driver.find_element(By.ID, 'menuUser').click()
+        # sleep(3)
+        # # Enter user account credentials
+        # driver.find_element(By.NAME, 'username').send_keys(locators.new_username)
+        # sleep(1)
+        # driver.find_element(By.NAME, 'password').send_keys(locators.new_password)
+        # sleep(1)
+        # # Try to sign in with the deleted user account credentials
+        # driver.find_element(By.ID, 'sign_in_btnundefined').click()
         sleep(1)
         error_text = driver.find_element(By.ID, 'signInResultMessage').text
         assert error_text == 'Incorrect user name or password.'
