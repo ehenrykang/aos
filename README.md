@@ -1,10 +1,10 @@
-# aos
 # Project info
 ________________________________
 ## Purpose
 To create automated test to test basic business critical functionality of an eCommerce web application Advantage Online Shopping
 ________________________________
 # Technology Stack
+________________________________
 ### Application Environment
 (where tests are developed) https://advantageonlineshopping.com/
 
