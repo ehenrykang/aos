@@ -174,7 +174,7 @@ def validate_homepage_texts_links():
                 print(f'Social Media Link FACEBOOK homepage is displayed and clickable.')
                 sleep(2)
             else:
-                print(f'Twitter link is not reachable')
+                print(f'Facebook link is not reachable. Please check your code.')
             driver.close()
             print(f'Social Media Link FACEBOOK tab is closed.')
             sleep(2)
@@ -188,7 +188,7 @@ def validate_homepage_texts_links():
                 print(f'Social Media Link TWITTER homepage is displayed and clickable.')
                 sleep(2)
             else:
-                print(f'Twitter link is not reachable')
+                print(f'Twitter link is not reachable. Please check your code.')
             driver.close()
             print(f'Social Media Link TWITTER tab is closed.')
             sleep(1.5)
